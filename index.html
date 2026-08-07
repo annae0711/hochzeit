@@ -71,9 +71,17 @@
     .scroll-cue { margin-top: 3.5rem; font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--hero-blue); text-shadow: 0 1px 10px rgba(0,0,0,0.6); }
 
     /* SECTIONS */
-    section { padding: 6.5rem 1.5rem; max-width: 780px; margin: 0 auto; text-align: center; scroll-margin-top: 70px; }
-    section.alt { background: var(--paper); max-width: none; }
-    section.alt .inner { max-width: 780px; margin: 0 auto; }
+    section { padding: 6.5rem 1.5rem; text-align: center; scroll-margin-top: 70px; }
+    .inner { max-width: 780px; margin: 0 auto; }
+    .bg-white { background: var(--white); }
+    .bg-paper { background: var(--paper); }
+    .bg-tint  { background: #eef2f6; }
+    .bg-dark  { background: #20252e; }
+    .bg-dark h2 { color: #ffffff; }
+    .bg-dark p { color: #c7ced8; }
+    .bg-dark .label { color: var(--hero-blue); }
+    .bg-dark .rule-h { background: var(--hero-blue); }
+    .bg-dark .hint { color: #9aa4b2; }
     section h2 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin-top: 0.9rem; }
     section p { color: #3d3d3d; font-weight: 300; margin: 0 auto 1.1rem; max-width: 620px; }
     .lead { font-size: 1.08rem; }
@@ -192,15 +200,17 @@
     <p class="scroll-cue">↓ Scrollen</p>
   </header>
 
-  <section id="story">
-    <p class="label reveal">Unsere Geschichte</p>
-    <h2 class="reveal">Wie alles begann</h2>
-    <div class="rule-h reveal"></div>
-    <p class="lead reveal">Kennengelernt haben wir uns in einem Club — und es war Liebe auf den ersten Blick.</p>
-    <p class="reveal">Wir haben an diesem Abend nicht getanzt und uns nicht geküsst. Wir haben einfach geredet. Stundenlang, bis der Abend vorbei war. Seither sind wir jeden Tag zusammen: unzertrennlich, voller gemeinsamer Erlebnisse — und heute sind wir genau dort angekommen, wo wir immer hinwollten. Bei einem Ja für immer.</p>
+  <section id="story" class="bg-tint">
+    <div class="inner">
+      <p class="label reveal">Unsere Geschichte</p>
+      <h2 class="reveal">Wie alles begann</h2>
+      <div class="rule-h reveal"></div>
+      <p class="lead reveal">Manchmal beginnt das Schönste ganz unerwartet.</p>
+      <p class="reveal">Kennengelernt haben wir uns in einem Club – und mitten im Trubel war vom ersten Blick an alles klar: Es war Liebe auf den ersten Blick. An diesem Abend haben wir nicht getanzt und uns nicht geküsst; wir haben einfach geredet. Stunde um Stunde, bis die Nacht vorüber war und keiner von uns gehen wollte. Seither sind wir unzertrennlich – jeden Tag zusammen, voller gemeinsamer Erlebnisse, großer Träume und kleiner Abenteuer. All diese Wege haben uns genau hierher geführt: zu unserem Ja für immer.</p>
+    </div>
   </section>
 
-  <section id="tag" class="alt">
+  <section id="tag" class="bg-white">
     <div class="inner">
       <p class="label reveal">Der große Tag</p>
       <h2 class="reveal">Unser Tagesablauf</h2>
@@ -221,7 +231,8 @@
     </div>
   </section>
 
-  <section id="location">
+  <section id="location" class="bg-paper">
+    <div class="inner">
     <p class="label reveal">Location &amp; Anfahrt</p>
     <h2 class="reveal">Kursaal Bad Wimpfen</h2>
     <div class="rule-h reveal"></div>
@@ -232,9 +243,10 @@
         src="https://www.google.com/maps?q=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen&amp;output=embed"
         loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Karte Kursaal Bad Wimpfen"></iframe>
     </div>
+    </div>
   </section>
 
-  <section id="infos" class="alt">
+  <section id="infos" class="bg-tint">
     <div class="inner">
       <p class="label reveal">Gut zu wissen</p>
       <h2 class="reveal">Für unsere Gäste</h2>
@@ -275,7 +287,8 @@
     </div>
   </section>
 
-  <section id="galerie">
+  <section id="galerie" class="bg-dark">
+    <div class="inner">
     <p class="label reveal">Vorfreude</p>
     <h2 class="reveal">Impressionen</h2>
     <div class="rule-h reveal"></div>
@@ -286,9 +299,11 @@
       <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&amp;h=1000&amp;fit=crop&amp;q=72&amp;auto=format" alt="Beispielbild Brautpaar" loading="lazy" /></div>
     </div>
     <p class="hint reveal" style="text-align:center;">Beispielbilder — werden durch eure eigenen Fotos ersetzt.</p>
+    </div>
   </section>
 
-  <section id="rsvp">
+  <section id="rsvp" class="bg-white">
+    <div class="inner">
     <p class="label reveal">Rückmeldung</p>
     <h2 class="reveal">Seid ihr dabei?</h2>
     <div class="rule-h reveal"></div>
@@ -340,6 +355,7 @@
         <p class="hint" style="text-align:center; margin-top:1rem;">Nach dem Klick öffnet sich euer E-Mail-Programm mit der fertigen Nachricht — einfach absenden.</p>
       </div>
     </form>
+    </div>
   </section>
 
   <footer>
