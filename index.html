@@ -44,7 +44,7 @@
       transition: background 0.3s ease, color 0.3s ease;
     }
     nav a:hover { color: var(--accent-deep); }
-    nav a.active { color: var(--accent-deep); }
+    nav a.active { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
 
     /* HERO */
     header.hero {
@@ -75,8 +75,8 @@
     .inner { max-width: 780px; margin: 0 auto; }
     .bg-white { background: var(--white); }
     .bg-paper { background: var(--paper); }
-    .bg-tint  { background: #eef2f6; }
-    .bg-dark  { background: #20252e; }
+    .bg-soft  { background: #eceef0; }
+    .bg-dark  { background: #232528; }
     .bg-dark h2 { color: #ffffff; }
     .bg-dark p { color: #c7ced8; }
     .bg-dark .label { color: var(--hero-blue); }
@@ -200,7 +200,7 @@
     <p class="scroll-cue">↓ Scrollen</p>
   </header>
 
-  <section id="story" class="bg-tint">
+  <section id="story" class="bg-paper">
     <div class="inner">
       <p class="label reveal">Unsere Geschichte</p>
       <h2 class="reveal">Wie alles begann</h2>
@@ -231,7 +231,7 @@
     </div>
   </section>
 
-  <section id="location" class="bg-paper">
+  <section id="location" class="bg-soft">
     <div class="inner">
     <p class="label reveal">Location &amp; Anfahrt</p>
     <h2 class="reveal">Kursaal Bad Wimpfen</h2>
@@ -246,7 +246,7 @@
     </div>
   </section>
 
-  <section id="infos" class="bg-tint">
+  <section id="infos" class="bg-white">
     <div class="inner">
       <p class="label reveal">Gut zu wissen</p>
       <h2 class="reveal">Für unsere Gäste</h2>
