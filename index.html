@@ -4,29 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anna &amp; Nino — 5. Juni 2027</title>
-  <meta name="description" content="Anna & Nino heiraten am 5. Juni 2027 im Kursaal Bad Wimpfen. Alle Infos für unsere Gäste." />
+  <meta name="description" content="Anna & Nino sagen Ja — am 5. Juni 2027 im Kursaal Bad Wimpfen. Alle Infos für unsere Gäste." />
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --white: #ffffff;
-      --paper: #fafafa;
+      --paper: #f6f7f8;
       --ink: #1a1a1a;
       --muted: #7c7c7c;
       --line: #e7e7e4;
-      --accent: #8ea3b5;       /* staubiges Blaugrau */
-      --accent-deep: #6c8395;
+      --accent: #7f97ad;        /* staubiges Blaugrau */
+      --accent-deep: #5f7a91;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      color: var(--ink);
-      background: var(--white);
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
+      font-family: 'Jost', sans-serif; font-weight: 300; color: var(--ink);
+      background: var(--white); line-height: 1.8; -webkit-font-smoothing: antialiased;
     }
     h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; }
 
@@ -36,38 +33,43 @@
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: center; gap: 2rem;
-      padding: 1.3rem 1rem;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-      flex-wrap: wrap;
+      display: flex; justify-content: center; gap: 0.6rem;
+      padding: 0.9rem 1rem; background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); flex-wrap: wrap;
     }
-    nav a { color: var(--ink); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400; transition: color 0.25s; }
+    nav a {
+      color: var(--ink); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; font-weight: 400; padding: 0.45rem 0.85rem; border-radius: 3px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
     nav a:hover { color: var(--accent-deep); }
+    nav a.active { background: var(--accent); color: #fff; }
 
     /* HERO */
     header.hero {
-      min-height: 100vh;
+      position: relative; min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 7rem 1.5rem 3rem;
-      background: linear-gradient(rgba(255,255,255,0.84), rgba(255,255,255,0.92)),
-                  url('https://picsum.photos/seed/annanino-hero/1920/1080?grayscale') center/cover no-repeat;
+      background-image: linear-gradient(rgba(255,255,255,0.42), rgba(255,255,255,0.58)),
+                        url('https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=1920&amp;q=75&amp;auto=format&amp;fit=crop');
+      background-size: cover; background-position: center; background-attachment: fixed;
     }
-    .hero h1 { font-size: clamp(3.4rem, 13vw, 8rem); letter-spacing: 0.02em; margin: 1.6rem 0 0.4rem; }
+    .hero > * { position: relative; }
+    .hero .label { color: var(--accent-deep); text-shadow: 0 1px 14px rgba(255,255,255,0.9); }
+    .hero h1 { font-size: clamp(3.4rem, 13vw, 8rem); letter-spacing: 0.02em; margin: 1.6rem 0 0.4rem; text-shadow: 0 2px 34px rgba(255,255,255,0.85); }
     .hero h1 .amp { color: var(--accent); font-style: italic; font-weight: 300; }
-    .hero .meta { font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); }
+    .hero .meta { font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: #4a4a4a; text-shadow: 0 1px 14px rgba(255,255,255,0.95); }
     .hero .meta strong { color: var(--ink); font-weight: 400; }
 
     /* COUNTDOWN */
     .countdown { display: flex; justify-content: center; gap: 2.4rem; flex-wrap: wrap; margin-top: 3rem; }
     .countdown div { min-width: 62px; }
-    .countdown .num { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 3rem; color: var(--ink); line-height: 1; }
-    .countdown .lbl { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; }
-    .scroll-cue { margin-top: 3.5rem; font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); }
+    .countdown .num { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 3rem; color: var(--ink); line-height: 1; text-shadow: 0 2px 20px rgba(255,255,255,0.9); }
+    .countdown .lbl { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: #5a5a5a; margin-top: 0.5rem; text-shadow: 0 1px 10px rgba(255,255,255,0.9); }
+    .scroll-cue { margin-top: 3.5rem; font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: #5a5a5a; text-shadow: 0 1px 10px rgba(255,255,255,0.9); }
 
     /* SECTIONS */
-    section { padding: 6.5rem 1.5rem; max-width: 780px; margin: 0 auto; text-align: center; }
+    section { padding: 6.5rem 1.5rem; max-width: 780px; margin: 0 auto; text-align: center; scroll-margin-top: 70px; }
     section.alt { background: var(--paper); max-width: none; }
     section.alt .inner { max-width: 780px; margin: 0 auto; }
     section h2 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin-top: 0.9rem; }
@@ -78,7 +80,7 @@
     .date-big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 8vw, 4.2rem); letter-spacing: 0.08em; color: var(--ink); }
     .date-sub { font-size: 0.9rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--muted); margin-top: 0.6rem; }
 
-    /* TIMELINE / ABLAUF */
+    /* TIMELINE */
     .timeline { margin: 3rem auto 0; max-width: 460px; text-align: left; }
     .timeline .row { display: grid; grid-template-columns: 88px 1fr; gap: 1.2rem; padding: 1.05rem 0; border-bottom: 1px solid var(--line); }
     .timeline .row:last-child { border-bottom: none; }
@@ -87,7 +89,7 @@
 
     /* MAP */
     .map { margin-top: 2.4rem; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
-    .map iframe { display: block; width: 100%; height: 320px; border: 0; filter: grayscale(0.35); }
+    .map iframe { display: block; width: 100%; height: 320px; border: 0; filter: grayscale(0.2); }
 
     /* INFO CARDS */
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-top: 3rem; text-align: center; }
@@ -108,7 +110,9 @@
 
     /* GALLERY */
     .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
-    .gallery img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(1); display: block; }
+    .g-item { overflow: hidden; }
+    .gallery img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; transition: transform 0.7s cubic-bezier(.2,.7,.2,1); }
+    .g-item:hover img { transform: scale(1.06); }
     @media (max-width: 600px) { .gallery { grid-template-columns: 1fr 1fr; } }
     .hint { font-size: 0.78rem; color: var(--muted); margin-top: 0.9rem; }
 
@@ -127,7 +131,7 @@
     .choice label { flex: 1; min-width: 150px; border: 1px solid var(--line); padding: 0.9rem 1rem; text-align: center; cursor: pointer; font-size: 0.9rem; letter-spacing: 0.04em; transition: all 0.2s; }
     .choice input { position: absolute; opacity: 0; pointer-events: none; }
     .choice input:checked + span { color: var(--accent-deep); font-weight: 400; }
-    .choice label:has(input:checked) { border-color: var(--accent); background: #f4f7f9; }
+    .choice label:has(input:checked) { border-color: var(--accent); background: #eef2f6; }
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
     @media (max-width: 460px) { .two { grid-template-columns: 1fr; } }
 
@@ -144,6 +148,22 @@
     footer .names { font-family: 'Cormorant Garamond', serif; font-size: 2rem; }
     footer .names .amp { color: var(--accent); font-style: italic; }
     footer p { color: var(--muted); font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 0.8rem; }
+
+    /* ===== EFFEKTE ===== */
+    /* Hero-Eingang */
+    .js .hero > * { opacity: 0; transform: translateY(20px); animation: heroIn 1s cubic-bezier(.2,.7,.2,1) forwards; }
+    .js .hero > *:nth-child(1){ animation-delay: 0.15s; }
+    .js .hero > *:nth-child(2){ animation-delay: 0.30s; }
+    .js .hero > *:nth-child(3){ animation-delay: 0.45s; }
+    .js .hero > *:nth-child(4){ animation-delay: 0.60s; }
+    .js .hero > *:nth-child(5){ animation-delay: 0.75s; }
+    @keyframes heroIn { to { opacity: 1; transform: none; } }
+    /* Scroll-Reveal */
+    .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1); }
+    .js .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .js .hero > *, .js .reveal { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -158,9 +178,9 @@
   </nav>
 
   <header class="hero">
-    <p class="label">Wir heiraten</p>
+    <p class="label">Wir sagen ja</p>
     <h1>Anna <span class="amp">&amp;</span> Nino</h1>
-    <p class="meta"><strong>05. Juni 2027</strong> &nbsp;·&nbsp; Bad Wimpfen &nbsp;·&nbsp; 15 Uhr</p>
+    <p class="meta"><strong>05. Juni 2027</strong> &nbsp;·&nbsp; Bad Wimpfen &nbsp;·&nbsp; ab 15 Uhr</p>
     <div class="countdown" id="countdown">
       <div><div class="num" id="cd-days">–</div><div class="lbl">Tage</div></div>
       <div><div class="num" id="cd-hours">–</div><div class="lbl">Stunden</div></div>
@@ -170,79 +190,79 @@
   </header>
 
   <section id="story">
-    <p class="label">Unsere Geschichte</p>
-    <h2>Wie alles begann</h2>
-    <div class="rule-h"></div>
-    <p class="lead">Kennengelernt haben wir uns in einem Club — und es war Liebe auf den ersten Blick.</p>
-    <p>Wir haben an diesem Abend nicht getanzt und uns nicht geküsst. Wir haben einfach geredet. Stundenlang, bis der Abend vorbei war. Seither sind wir jeden Tag zusammen: unzertrennlich, voller gemeinsamer Erlebnisse — und heute sind wir genau dort angekommen, wo wir immer hinwollten. Bei einem Ja für immer.</p>
+    <p class="label reveal">Unsere Geschichte</p>
+    <h2 class="reveal">Wie alles begann</h2>
+    <div class="rule-h reveal"></div>
+    <p class="lead reveal">Kennengelernt haben wir uns in einem Club — und es war Liebe auf den ersten Blick.</p>
+    <p class="reveal">Wir haben an diesem Abend nicht getanzt und uns nicht geküsst. Wir haben einfach geredet. Stundenlang, bis der Abend vorbei war. Seither sind wir jeden Tag zusammen: unzertrennlich, voller gemeinsamer Erlebnisse — und heute sind wir genau dort angekommen, wo wir immer hinwollten. Bei einem Ja für immer.</p>
   </section>
 
   <section id="tag" class="alt">
     <div class="inner">
-      <p class="label">Der große Tag</p>
-      <h2>Unser Tagesablauf</h2>
-      <div class="rule-h"></div>
-      <p class="date-big">05 · 06 · 2027</p>
-      <p class="date-sub">Samstag &nbsp;·&nbsp; Beginn 15:00 Uhr</p>
+      <p class="label reveal">Der große Tag</p>
+      <h2 class="reveal">Unser Tagesablauf</h2>
+      <div class="rule-h reveal"></div>
+      <p class="date-big reveal">05 · 06 · 2027</p>
+      <p class="date-sub reveal">Samstag &nbsp;·&nbsp; Beginn 15:00 Uhr</p>
       <div class="timeline">
-        <div class="row"><div class="t">15:00</div><div class="w">Sektempfang, Gratulation &amp; Fotos</div></div>
-        <div class="row"><div class="t">17:00</div><div class="w">Überraschungen &amp; Programm</div></div>
-        <div class="row"><div class="t">18:00</div><div class="w">Zeit zum Genießen</div></div>
-        <div class="row"><div class="t">18:30</div><div class="w">Abendessen</div></div>
-        <div class="row"><div class="t">20:00</div><div class="w">Überraschungen &amp; Programm</div></div>
-        <div class="row"><div class="t">20:30</div><div class="w">Zeit zum Genießen</div></div>
-        <div class="row"><div class="t">21:15</div><div class="w">Tortenanschnitt</div></div>
-        <div class="row"><div class="t">22:00</div><div class="w">Hochzeitstanz &amp; Eröffnung der Tanzfläche</div></div>
-        <div class="row"><div class="t">00:00</div><div class="w">Mitternachtssnack</div></div>
+        <div class="row reveal"><div class="t">15:00</div><div class="w">Sektempfang, Gratulation &amp; Fotos</div></div>
+        <div class="row reveal"><div class="t">17:00</div><div class="w">Überraschungen &amp; Programm</div></div>
+        <div class="row reveal"><div class="t">18:00</div><div class="w">Zeit zum Genießen</div></div>
+        <div class="row reveal"><div class="t">18:30</div><div class="w">Abendessen</div></div>
+        <div class="row reveal"><div class="t">20:00</div><div class="w">Überraschungen &amp; Programm</div></div>
+        <div class="row reveal"><div class="t">20:30</div><div class="w">Zeit zum Genießen</div></div>
+        <div class="row reveal"><div class="t">21:15</div><div class="w">Tortenanschnitt</div></div>
+        <div class="row reveal"><div class="t">22:00</div><div class="w">Hochzeitstanz &amp; Eröffnung der Tanzfläche</div></div>
+        <div class="row reveal"><div class="t">00:00</div><div class="w">Mitternachtssnack</div></div>
       </div>
     </div>
   </section>
 
   <section id="location">
-    <p class="label">Location &amp; Anfahrt</p>
-    <h2>Kursaal Bad Wimpfen</h2>
-    <div class="rule-h"></div>
-    <p>Wir feiern im <strong>Kursaal Bad Wimpfen</strong><br>Osterbergstraße 16 · 74206 Bad Wimpfen</p>
-    <p class="hint" style="text-align:center;">Parkplätze findet ihr ganz in der Nähe (gegenüber dem Hotel).</p>
-    <div class="map">
+    <p class="label reveal">Location &amp; Anfahrt</p>
+    <h2 class="reveal">Kursaal Bad Wimpfen</h2>
+    <div class="rule-h reveal"></div>
+    <p class="reveal">Wir feiern im <strong>Kursaal Bad Wimpfen</strong><br>Osterbergstraße 16 · 74206 Bad Wimpfen</p>
+    <p class="hint reveal" style="text-align:center;">Parkplätze findet ihr ganz in der Nähe (gegenüber dem Hotel).</p>
+    <div class="map reveal">
       <iframe
-        src="https://www.google.com/maps?q=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen&output=embed"
+        src="https://www.google.com/maps?q=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen&amp;output=embed"
         loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Karte Kursaal Bad Wimpfen"></iframe>
     </div>
   </section>
 
   <section id="infos" class="alt">
     <div class="inner">
-      <p class="label">Gut zu wissen</p>
-      <h2>Für unsere Gäste</h2>
-      <div class="rule-h"></div>
+      <p class="label reveal">Gut zu wissen</p>
+      <h2 class="reveal">Für unsere Gäste</h2>
+      <div class="rule-h reveal"></div>
       <div class="cards">
-        <div class="card">
+        <div class="card reveal">
           <p class="k">Dresscode</p><h3>Festlich &amp; bunt</h3>
           <p>Festlich und elegant — und gerne farbenfroh. Zieht an, worin ihr euch großartig fühlt.</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <p class="k">Geschenke</p><h3>Reisekasse</h3>
           <p>Das schönste Geschenk seid ihr. Wer mag: Statt Toaster &amp; Vase sparen wir auf die Flitterwochen und unseren gemeinsamen Start — über einen Beitrag zur Reisekasse freuen wir uns von Herzen. 🤍</p>
         </div>
       </div>
 
       <div class="hotels">
-        <span class="k">Übernachtung</span>
-        <h3>Hotels in der Nähe</h3>
-        <div class="hotel">
+        <span class="k reveal">Übernachtung</span>
+        <h3 class="reveal">Hotels in der Nähe</h3>
+        <div class="hotel reveal">
           <div class="h-name">Hotel am Rosengarten</div>
           <div class="h-meta">Osterbergstraße 16 · 74206 Bad Wimpfen</div>
           <div class="h-meta">direkt an der Location</div>
           <div class="h-meta">Tel. <a href="tel:+4970639910">07063 9910</a></div>
         </div>
-        <div class="hotel">
+        <div class="hotel reveal">
           <div class="h-name">Hotel Neues Tor</div>
           <div class="h-meta">Alte Heilbronner Straße 2 · 74206 Bad Wimpfen</div>
           <div class="h-meta">ca. 15 Min. zu Fuß · 4 Min. mit dem Auto</div>
           <div class="h-meta">Tel. <a href="tel:+49706393000">07063 9300-0</a></div>
         </div>
-        <div class="hotel">
+        <div class="hotel reveal">
           <div class="h-name">Hotel Herberge zur Traube</div>
           <div class="h-meta">Hauptstraße 1 · 74206 Bad Wimpfen (Altstadt)</div>
           <div class="h-meta">ca. 15 Min. zu Fuß · 5 Min. mit dem Auto</div>
@@ -253,25 +273,25 @@
   </section>
 
   <section id="galerie">
-    <p class="label">Vorfreude</p>
-    <h2>Impressionen</h2>
-    <div class="rule-h"></div>
-    <p>Unsere echten Fotos folgen nach dem Shooting im nächsten Monat. Bis dahin ein kleiner Vorgeschmack auf den Look:</p>
+    <p class="label reveal">Vorfreude</p>
+    <h2 class="reveal">Impressionen</h2>
+    <div class="rule-h reveal"></div>
+    <p class="reveal">Unsere echten Fotos folgen nach dem Shooting im nächsten Monat. Bis dahin ein kleiner Vorgeschmack auf den Look:</p>
     <div class="gallery">
-      <img src="https://picsum.photos/seed/annanino-a/800/1000?grayscale" alt="Beispielbild" loading="lazy" />
-      <img src="https://picsum.photos/seed/annanino-b/800/1000?grayscale" alt="Beispielbild" loading="lazy" />
-      <img src="https://picsum.photos/seed/annanino-c/800/1000?grayscale" alt="Beispielbild" loading="lazy" />
+      <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&amp;h=1000&amp;fit=crop&amp;q=72&amp;auto=format" alt="Beispielbild Brautpaar" loading="lazy" /></div>
+      <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&amp;h=1000&amp;fit=crop&amp;q=72&amp;auto=format" alt="Beispielbild Hochzeit" loading="lazy" /></div>
+      <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&amp;h=1000&amp;fit=crop&amp;q=72&amp;auto=format" alt="Beispielbild Brautpaar" loading="lazy" /></div>
     </div>
-    <p class="hint" style="text-align:center;">Beispielbilder — werden durch eure eigenen Fotos ersetzt.</p>
+    <p class="hint reveal" style="text-align:center;">Beispielbilder — werden durch eure eigenen Fotos ersetzt.</p>
   </section>
 
   <section id="rsvp">
-    <p class="label">Rückmeldung</p>
-    <h2>Seid ihr dabei?</h2>
-    <div class="rule-h"></div>
-    <p>Wir würden uns von Herzen freuen, diesen Tag mit euch zu teilen.<br>Bitte gebt uns bis spätestens <strong>1. Mai 2027</strong> Bescheid.</p>
+    <p class="label reveal">Rückmeldung</p>
+    <h2 class="reveal">Seid ihr dabei?</h2>
+    <div class="rule-h reveal"></div>
+    <p class="reveal">Wir würden uns von Herzen freuen, diesen Tag mit euch zu teilen.<br>Bitte gebt uns bis spätestens <strong>1. Mai 2027</strong> Bescheid.</p>
 
-    <form class="rsvp-form" id="rsvpForm">
+    <form class="rsvp-form reveal" id="rsvpForm">
       <div class="field">
         <label class="q" for="f-name">Name(n)</label>
         <input type="text" id="f-name" name="name" placeholder="Vor- und Nachname(n)" required />
@@ -320,8 +340,8 @@
   </section>
 
   <footer>
-    <p class="names">Anna <span class="amp">&amp;</span> Nino</p>
-    <p>05. Juni 2027 &nbsp;·&nbsp; Bad Wimpfen</p>
+    <p class="names reveal">Anna <span class="amp">&amp;</span> Nino</p>
+    <p class="reveal">05. Juni 2027 &nbsp;·&nbsp; Bad Wimpfen</p>
   </footer>
 
   <script>
@@ -335,7 +355,39 @@
     }
     tick(); setInterval(tick, 30000);
 
-    // RSVP – vorläufig per E-Mail (kann später auf automatische Sammlung umgestellt werden)
+    // Scroll-Reveal (sanftes Einblenden)
+    (function () {
+      var items = document.querySelectorAll('.reveal');
+      // leichte Staffelung innerhalb von Gruppen
+      ['.timeline', '.cards', '.hotels', '.gallery'].forEach(function (sel) {
+        var group = document.querySelector(sel);
+        if (!group) return;
+        group.querySelectorAll('.reveal').forEach(function (el, i) { el.style.transitionDelay = (i * 80) + 'ms'; });
+      });
+      if (!('IntersectionObserver' in window)) { items.forEach(function (el){ el.classList.add('in'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      items.forEach(function (el) { io.observe(el); });
+    })();
+
+    // Aktiver Menüpunkt (blau hinterlegt) je nach Position
+    (function () {
+      var links = {}; document.querySelectorAll('nav a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+      var sections = document.querySelectorAll('section[id]');
+      if (!('IntersectionObserver' in window)) return;
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            Object.keys(links).forEach(function (k) { links[k].classList.remove('active'); });
+            if (links[e.target.id]) links[e.target.id].classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      sections.forEach(function (s) { spy.observe(s); });
+    })();
+
+    // RSVP – vorläufig per E-Mail
     var RSVP_EMAIL = "anna.engler1@gmx.de";
     document.getElementById('rsvpForm').addEventListener('submit', function (e) {
       e.preventDefault();
@@ -352,8 +404,7 @@
       ];
       var subject = "RSVP Hochzeit Anna & Nino – " + (f.name.value || "");
       window.location.href = "mailto:" + RSVP_EMAIL +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(lines.join("\n"));
+        "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
     });
   </script>
 
