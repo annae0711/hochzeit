@@ -6,9 +6,7 @@
   <title>Anna &amp; Nino — 5. Juni 2027</title>
   <meta name="description" content="Anna & Nino sagen Ja — am 5. Juni 2027 im Kursaal Bad Wimpfen. Alle Infos für unsere Gäste." />
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="fonts/fonts.css" />
   <style>
     :root {
       --white: #ffffff;
@@ -54,7 +52,7 @@
     }
     header.hero::before {
       content: ""; position: absolute; inset: 0; z-index: 0;
-      background-image: url('https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=1920&amp;q=80&amp;auto=format&amp;fit=crop');
+      background-image: url('img/hero.jpg');
       background-size: cover; background-position: center; background-attachment: fixed;
       filter: grayscale(1) contrast(1.03);
     }
@@ -89,6 +87,13 @@
     #location .hint { color: rgba(255,255,255,0.9); text-shadow: 0 1px 3px rgba(0,0,0,0.28); }
     #location .label { color: #ffffff; }
     #location .rule-h { background: #ffffff; }
+    #location .btn { border-color: #ffffff; color: #ffffff; }
+    #location .btn:hover { background: #ffffff; color: var(--ink); }
+    /* Weiche Übergänge oben (weiß->grau) und unten (grau->weiß) */
+    #location { position: relative; overflow: hidden; }
+    #location::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 130px; background: linear-gradient(#ffffff, #aaadb0); z-index: 0; }
+    #location::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 150px; background: linear-gradient(#aaadb0, #ffffff); z-index: 0; }
+    #location .inner { position: relative; z-index: 1; }
     .bg-dark  { background: #232528; }
     .bg-dark h2 { color: #ffffff; }
     .bg-dark p { color: #c7ced8; }
@@ -119,7 +124,7 @@
     .cal-heart { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -54%); width: 40px; height: 40px; z-index: -1; }
     /* "Der grosse Tag" als Foto-Band mit Parallax */
     #tag { position: relative; overflow: hidden; background: #20252e; }
-    #tag::before { content: ""; position: absolute; inset: 0; z-index: 0; background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&amp;q=80&amp;auto=format&amp;fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; filter: grayscale(1) contrast(1.03); }
+    #tag::before { content: ""; position: absolute; inset: 0; z-index: 0; background-image: url('img/tag.jpg'); background-size: cover; background-position: center; background-attachment: fixed; filter: grayscale(1) contrast(1.03); }
     #tag::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.64)); }
     #tag .inner { position: relative; z-index: 1; }
     #tag h2 { color: #ffffff; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
@@ -132,7 +137,7 @@
     #tag .cal-heart { stroke: #dd4b46; stroke-width: 1.6; }
     /* "Hotels" als Foto-Band mit Parallax */
     #hotels { position: relative; overflow: hidden; background: #20252e; }
-    #hotels::before { content: ""; position: absolute; inset: 0; z-index: 0; background-image: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1920&amp;q=80&amp;auto=format&amp;fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; filter: grayscale(1) contrast(1.03); }
+    #hotels::before { content: ""; position: absolute; inset: 0; z-index: 0; background-image: url('img/hotels.jpg'); background-size: cover; background-position: center; background-attachment: fixed; filter: grayscale(1) contrast(1.03); }
     #hotels::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.68)); }
     #hotels .inner { position: relative; z-index: 1; }
     #hotels h2 { color: #ffffff; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
@@ -219,6 +224,9 @@
     footer .names { font-family: 'Cormorant Garamond', serif; font-size: 2rem; }
     footer .names .amp { color: var(--accent); font-style: italic; }
     footer p { color: var(--muted); font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 0.8rem; }
+    footer .foot-links { margin-top: 1.5rem; }
+    footer .foot-links a { color: var(--muted); text-decoration: none; }
+    footer .foot-links a:hover { color: var(--accent-deep); }
 
     /* ===== EFFEKTE ===== */
     /* Hero-Eingang */
@@ -362,11 +370,7 @@
     <div class="rule-h reveal"></div>
     <p class="reveal">Wir feiern im <strong>Kursaal Bad Wimpfen</strong><br>Osterbergstraße 16 · 74206 Bad Wimpfen</p>
     <p class="hint reveal" style="text-align:center;">Parkplätze findet ihr ganz in der Nähe (gegenüber dem Hotel).</p>
-    <div class="map reveal">
-      <iframe
-        src="https://www.google.com/maps?q=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen&amp;output=embed"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Karte Kursaal Bad Wimpfen"></iframe>
-    </div>
+    <a class="btn reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen" target="_blank" rel="noopener noreferrer">Auf Google Maps ansehen</a>
     </div>
   </section>
 
@@ -476,6 +480,7 @@
   <footer>
     <p class="names reveal">Anna <span class="amp">&amp;</span> Nino</p>
     <p class="reveal">05. Juni 2027 &nbsp;·&nbsp; Bad Wimpfen</p>
+    <p class="foot-links reveal"><a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="impressum.html">Impressum</a></p>
   </footer>
 
   <script>
