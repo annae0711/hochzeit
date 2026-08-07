@@ -30,27 +30,20 @@
     }
     h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; }
 
-    .label {
-      font-size: 0.72rem; letter-spacing: 0.4em; text-transform: uppercase;
-      color: var(--accent-deep); font-weight: 400;
-    }
+    .label { font-size: 0.72rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--accent-deep); font-weight: 400; }
     .rule-h { width: 48px; height: 1px; background: var(--accent); margin: 1.6rem auto; }
 
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: center; gap: 2.2rem;
+      display: flex; justify-content: center; gap: 2rem;
       padding: 1.3rem 1rem;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
       flex-wrap: wrap;
     }
-    nav a {
-      color: var(--ink); text-decoration: none;
-      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400;
-      transition: color 0.25s;
-    }
+    nav a { color: var(--ink); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400; transition: color 0.25s; }
     nav a:hover { color: var(--accent-deep); }
 
     /* HERO */
@@ -58,7 +51,8 @@
       min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 7rem 1.5rem 3rem;
-      background: var(--white);
+      background: linear-gradient(rgba(255,255,255,0.84), rgba(255,255,255,0.92)),
+                  url('https://picsum.photos/seed/annanino-hero/1920/1080?grayscale') center/cover no-repeat;
     }
     .hero h1 { font-size: clamp(3.4rem, 13vw, 8rem); letter-spacing: 0.02em; margin: 1.6rem 0 0.4rem; }
     .hero h1 .amp { color: var(--accent); font-style: italic; font-weight: 300; }
@@ -96,39 +90,44 @@
     .map iframe { display: block; width: 100%; height: 320px; border: 0; filter: grayscale(0.35); }
 
     /* INFO CARDS */
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; margin-top: 3rem; text-align: center; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-top: 3rem; text-align: center; }
     .card h3 { font-size: 1.7rem; margin-bottom: 0.5rem; }
     .card .k { font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent-deep); }
     .card p { font-size: 0.95rem; }
 
+    /* HOTELS */
+    .hotels { margin: 3.5rem auto 0; max-width: 540px; }
+    .hotels .k { font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent-deep); text-align: center; display: block; }
+    .hotels h3 { font-size: 1.9rem; text-align: center; margin: 0.3rem 0 1.4rem; }
+    .hotel { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); text-align: left; flex-wrap: wrap; }
+    .hotel:last-child { border-bottom: none; }
+    .h-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--ink); }
+    .h-dist { color: var(--muted); font-size: 0.85rem; align-self: center; }
+
+    /* GALLERY */
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    .gallery img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(1); display: block; }
+    @media (max-width: 600px) { .gallery { grid-template-columns: 1fr 1fr; } }
+    .hint { font-size: 0.78rem; color: var(--muted); margin-top: 0.9rem; }
+
     /* FORM */
     form.rsvp-form { margin: 2.8rem auto 0; max-width: 520px; text-align: left; }
     .field { margin-bottom: 1.8rem; }
-    .field > label.q {
-      display: block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent-deep); margin-bottom: 0.7rem;
-    }
-    .field input[type="text"],
-    .field input[type="number"],
-    .field input[type="email"],
-    .field textarea {
-      width: 100%; border: none; border-bottom: 1px solid var(--line);
-      background: transparent; font-family: 'Jost', sans-serif; font-weight: 300;
-      font-size: 1rem; color: var(--ink); padding: 0.5rem 0.1rem; transition: border-color 0.25s;
+    .field > label.q { display: block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 0.7rem; }
+    .field input[type="text"], .field input[type="number"], .field input[type="email"], .field textarea {
+      width: 100%; border: none; border-bottom: 1px solid var(--line); background: transparent;
+      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 1rem; color: var(--ink);
+      padding: 0.5rem 0.1rem; transition: border-color 0.25s;
     }
     .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
     .field textarea { resize: vertical; min-height: 70px; }
     .choice { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .choice label {
-      flex: 1; min-width: 150px; border: 1px solid var(--line); padding: 0.9rem 1rem;
-      text-align: center; cursor: pointer; font-size: 0.9rem; letter-spacing: 0.04em; transition: all 0.2s;
-    }
+    .choice label { flex: 1; min-width: 150px; border: 1px solid var(--line); padding: 0.9rem 1rem; text-align: center; cursor: pointer; font-size: 0.9rem; letter-spacing: 0.04em; transition: all 0.2s; }
     .choice input { position: absolute; opacity: 0; pointer-events: none; }
     .choice input:checked + span { color: var(--accent-deep); font-weight: 400; }
     .choice label:has(input:checked) { border-color: var(--accent); background: #f4f7f9; }
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
     @media (max-width: 460px) { .two { grid-template-columns: 1fr; } }
-    .hint { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; }
 
     /* BUTTON */
     .btn {
@@ -152,6 +151,7 @@
     <a href="#tag">Der Tag</a>
     <a href="#location">Location</a>
     <a href="#infos">Infos</a>
+    <a href="#galerie">Vorfreude</a>
     <a href="#rsvp">Zusagen</a>
   </nav>
 
@@ -220,15 +220,32 @@
           <p>Festlich und elegant — und gerne farbenfroh. Zieht an, worin ihr euch großartig fühlt.</p>
         </div>
         <div class="card">
-          <p class="k">Übernachtung</p><h3>Hotels</h3>
-          <p class="placeholder">[Hotel-Tipps folgen in Kürze.]</p>
-        </div>
-        <div class="card">
           <p class="k">Geschenke</p><h3>Reisekasse</h3>
           <p>Das schönste Geschenk seid ihr. Wer mag: Statt Toaster &amp; Vase sparen wir auf die Flitterwochen und unseren gemeinsamen Start — über einen Beitrag zur Reisekasse freuen wir uns von Herzen. 🤍</p>
         </div>
       </div>
+
+      <div class="hotels">
+        <span class="k">Übernachtung</span>
+        <h3>Hotels in der Nähe</h3>
+        <div class="hotel"><div class="h-name">Hotel am Rosengarten</div><div class="h-dist">direkt an der Location</div></div>
+        <div class="hotel"><div class="h-name">Hotel Neues Tor</div><div class="h-dist">ca. 10 Min. zu Fuß · 1–2 Min. mit dem Auto</div></div>
+        <div class="hotel"><div class="h-name">Hotel zur Traube</div><div class="h-dist">Altstadt · 15–20 Min. zu Fuß · 5 Min. mit dem Auto</div></div>
+      </div>
     </div>
+  </section>
+
+  <section id="galerie">
+    <p class="label">Vorfreude</p>
+    <h2>Impressionen</h2>
+    <div class="rule-h"></div>
+    <p>Unsere echten Fotos folgen nach dem Shooting im nächsten Monat. Bis dahin ein kleiner Vorgeschmack auf den Look:</p>
+    <div class="gallery">
+      <img src="https://picsum.photos/seed/annanino-a/800/1000?grayscale" alt="Beispielbild" loading="lazy" />
+      <img src="https://picsum.photos/seed/annanino-b/800/1000?grayscale" alt="Beispielbild" loading="lazy" />
+      <img src="https://picsum.photos/seed/annanino-c/800/1000?grayscale" alt="Beispielbild" loading="lazy" />
+    </div>
+    <p class="hint" style="text-align:center;">Beispielbilder — werden durch eure eigenen Fotos ersetzt.</p>
   </section>
 
   <section id="rsvp">
@@ -301,8 +318,8 @@
     }
     tick(); setInterval(tick, 30000);
 
-    // RSVP – vorläufig per E-Mail (wird später auf automatische Sammlung umgestellt)
-    var RSVP_EMAIL = "DEINE-EMAIL@beispiel.de"; // <-- wird noch durch eure echte Adresse ersetzt
+    // RSVP – vorläufig per E-Mail (kann später auf automatische Sammlung umgestellt werden)
+    var RSVP_EMAIL = "anna.engler1@gmx.de";
     document.getElementById('rsvpForm').addEventListener('submit', function (e) {
       e.preventDefault();
       var f = e.target;
