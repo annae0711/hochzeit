@@ -82,6 +82,14 @@
     .bg-dark .label { color: var(--hero-blue); }
     .bg-dark .rule-h { background: var(--hero-blue); }
     .bg-dark .hint { color: #9aa4b2; }
+    /* Eigener Charakter je Abschnitt */
+    #story { position: relative; overflow: hidden; }
+    #story .watermark { position: absolute; inset: 0; margin: auto; width: min(520px, 72%); height: auto; opacity: 0.05; filter: invert(1); pointer-events: none; }
+    #story .inner { position: relative; z-index: 1; }
+    #tag .timeline { position: relative; }
+    #tag .timeline::before { content: ""; position: absolute; top: 0.6rem; bottom: 0.6rem; left: 96px; width: 1px; background: var(--line); }
+    #infos .card { background: #ffffff; border: 1px solid var(--line); border-radius: 3px; padding: 2rem 1.5rem; box-shadow: 0 6px 24px rgba(0,0,0,0.05); }
+    #rsvp .rsvp-form { background: #ffffff; border: 1px solid var(--line); border-radius: 3px; padding: 2.6rem 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
     section h2 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin-top: 0.9rem; }
     section p { color: #3d3d3d; font-weight: 300; margin: 0 auto 1.1rem; max-width: 620px; }
     .lead { font-size: 1.08rem; }
@@ -200,7 +208,8 @@
     <p class="scroll-cue">↓ Scrollen</p>
   </header>
 
-  <section id="story" class="bg-paper">
+  <section id="story" class="bg-white">
+    <img class="watermark" src="logo.png?v=6" alt="" aria-hidden="true" />
     <div class="inner">
       <p class="label reveal">Unsere Geschichte</p>
       <h2 class="reveal">Wie alles begann</h2>
@@ -210,7 +219,7 @@
     </div>
   </section>
 
-  <section id="tag" class="bg-white">
+  <section id="tag" class="bg-paper">
     <div class="inner">
       <p class="label reveal">Der große Tag</p>
       <h2 class="reveal">Unser Tagesablauf</h2>
@@ -302,7 +311,7 @@
     </div>
   </section>
 
-  <section id="rsvp" class="bg-white">
+  <section id="rsvp" class="bg-paper">
     <div class="inner">
     <p class="label reveal">Rückmeldung</p>
     <h2 class="reveal">Seid ihr dabei?</h2>
