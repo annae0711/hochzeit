@@ -34,13 +34,12 @@
       font-size: 0.72rem; letter-spacing: 0.4em; text-transform: uppercase;
       color: var(--accent-deep); font-weight: 400;
     }
-    .rule { width: 1px; height: 60px; background: var(--line); margin: 2.2rem auto; }
     .rule-h { width: 48px; height: 1px; background: var(--accent); margin: 1.6rem auto; }
 
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: center; gap: 2.4rem;
+      display: flex; justify-content: center; gap: 2.2rem;
       padding: 1.3rem 1rem;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
@@ -49,7 +48,7 @@
     }
     nav a {
       color: var(--ink); text-decoration: none;
-      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 400;
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400;
       transition: color 0.25s;
     }
     nav a:hover { color: var(--accent-deep); }
@@ -61,10 +60,7 @@
       text-align: center; padding: 7rem 1.5rem 3rem;
       background: var(--white);
     }
-    .hero h1 {
-      font-size: clamp(3.4rem, 13vw, 8rem);
-      letter-spacing: 0.02em; margin: 1.6rem 0 0.4rem;
-    }
+    .hero h1 { font-size: clamp(3.4rem, 13vw, 8rem); letter-spacing: 0.02em; margin: 1.6rem 0 0.4rem; }
     .hero h1 .amp { color: var(--accent); font-style: italic; font-weight: 300; }
     .hero .meta { font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); }
     .hero .meta strong { color: var(--ink); font-weight: 400; }
@@ -74,7 +70,6 @@
     .countdown div { min-width: 62px; }
     .countdown .num { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 3rem; color: var(--ink); line-height: 1; }
     .countdown .lbl { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; }
-
     .scroll-cue { margin-top: 3.5rem; font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); }
 
     /* SECTIONS */
@@ -89,16 +84,57 @@
     .date-big { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 8vw, 4.2rem); letter-spacing: 0.08em; color: var(--ink); }
     .date-sub { font-size: 0.9rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--muted); margin-top: 0.6rem; }
 
-    /* INFO */
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+    /* TIMELINE / ABLAUF */
+    .timeline { margin: 3rem auto 0; max-width: 460px; text-align: left; }
+    .timeline .row { display: grid; grid-template-columns: 88px 1fr; gap: 1.2rem; padding: 1.05rem 0; border-bottom: 1px solid var(--line); }
+    .timeline .row:last-child { border-bottom: none; }
+    .timeline .t { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--accent-deep); line-height: 1.2; }
+    .timeline .w { align-self: center; font-size: 0.98rem; }
+
+    /* MAP */
+    .map { margin-top: 2.4rem; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+    .map iframe { display: block; width: 100%; height: 320px; border: 0; filter: grayscale(0.35); }
+
+    /* INFO CARDS */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; margin-top: 3rem; text-align: center; }
     .card h3 { font-size: 1.7rem; margin-bottom: 0.5rem; }
     .card .k { font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent-deep); }
+    .card p { font-size: 0.95rem; }
+
+    /* FORM */
+    form.rsvp-form { margin: 2.8rem auto 0; max-width: 520px; text-align: left; }
+    .field { margin-bottom: 1.8rem; }
+    .field > label.q {
+      display: block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent-deep); margin-bottom: 0.7rem;
+    }
+    .field input[type="text"],
+    .field input[type="number"],
+    .field input[type="email"],
+    .field textarea {
+      width: 100%; border: none; border-bottom: 1px solid var(--line);
+      background: transparent; font-family: 'Jost', sans-serif; font-weight: 300;
+      font-size: 1rem; color: var(--ink); padding: 0.5rem 0.1rem; transition: border-color 0.25s;
+    }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+    .field textarea { resize: vertical; min-height: 70px; }
+    .choice { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .choice label {
+      flex: 1; min-width: 150px; border: 1px solid var(--line); padding: 0.9rem 1rem;
+      text-align: center; cursor: pointer; font-size: 0.9rem; letter-spacing: 0.04em; transition: all 0.2s;
+    }
+    .choice input { position: absolute; opacity: 0; pointer-events: none; }
+    .choice input:checked + span { color: var(--accent-deep); font-weight: 400; }
+    .choice label:has(input:checked) { border-color: var(--accent); background: #f4f7f9; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+    @media (max-width: 460px) { .two { grid-template-columns: 1fr; } }
+    .hint { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; }
 
     /* BUTTON */
     .btn {
-      display: inline-block; margin-top: 2rem; padding: 1rem 2.8rem;
-      border: 1px solid var(--ink); color: var(--ink); text-decoration: none;
-      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 400;
+      display: inline-block; margin-top: 1rem; padding: 1rem 2.8rem;
+      border: 1px solid var(--ink); color: var(--ink); text-decoration: none; cursor: pointer;
+      font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 400;
       background: transparent; transition: all 0.3s;
     }
     .btn:hover { background: var(--ink); color: #fff; }
@@ -142,11 +178,21 @@
   <section id="tag" class="alt">
     <div class="inner">
       <p class="label">Der große Tag</p>
-      <h2>Save the Date</h2>
+      <h2>Unser Tagesablauf</h2>
       <div class="rule-h"></div>
       <p class="date-big">05 · 06 · 2027</p>
       <p class="date-sub">Samstag &nbsp;·&nbsp; Beginn 15:00 Uhr</p>
-      <p style="margin-top:1.6rem;" class="placeholder">[Wenn ihr mir den weiteren Ablauf nennt (Trauung, Sektempfang, Dinner, Party …), setze ich hier eine schöne, schlichte Zeitleiste ein.]</p>
+      <div class="timeline">
+        <div class="row"><div class="t">15:00</div><div class="w">Sektempfang, Gratulation &amp; Fotos</div></div>
+        <div class="row"><div class="t">17:00</div><div class="w">Überraschungen &amp; Programm</div></div>
+        <div class="row"><div class="t">18:00</div><div class="w">Zeit zum Genießen</div></div>
+        <div class="row"><div class="t">18:30</div><div class="w">Abendessen</div></div>
+        <div class="row"><div class="t">20:00</div><div class="w">Überraschungen &amp; Programm</div></div>
+        <div class="row"><div class="t">20:30</div><div class="w">Zeit zum Genießen</div></div>
+        <div class="row"><div class="t">21:15</div><div class="w">Tortenanschnitt</div></div>
+        <div class="row"><div class="t">22:00</div><div class="w">Hochzeitstanz &amp; Eröffnung der Tanzfläche</div></div>
+        <div class="row"><div class="t">00:00</div><div class="w">Mitternachtssnack</div></div>
+      </div>
     </div>
   </section>
 
@@ -154,8 +200,13 @@
     <p class="label">Location &amp; Anfahrt</p>
     <h2>Kursaal Bad Wimpfen</h2>
     <div class="rule-h"></div>
-    <p>Wir feiern im <strong>Kursaal in Bad Wimpfen</strong>.</p>
-    <p class="placeholder">[Hier kann die genaue Adresse, ein Hinweis zum Parken und – wenn ihr möchtet – eine kleine Karte hin. Sag mir einfach die Adresse.]</p>
+    <p>Wir feiern im <strong>Kursaal Bad Wimpfen</strong><br>Osterbergstraße 16 · 74206 Bad Wimpfen</p>
+    <p class="hint" style="text-align:center;">Parkplätze findet ihr ganz in der Nähe (gegenüber dem Hotel).</p>
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps?q=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Karte Kursaal Bad Wimpfen"></iframe>
+    </div>
   </section>
 
   <section id="infos" class="alt">
@@ -164,9 +215,18 @@
       <h2>Für unsere Gäste</h2>
       <div class="rule-h"></div>
       <div class="cards">
-        <div class="card"><p class="k">Dresscode</p><h3>Festlich</h3><p class="placeholder">[eure Wünsche]</p></div>
-        <div class="card"><p class="k">Übernachtung</p><h3>Hotels</h3><p class="placeholder">[Tipps in der Nähe]</p></div>
-        <div class="card"><p class="k">Geschenke</p><h3>Wünsche</h3><p class="placeholder">[dezent formuliert]</p></div>
+        <div class="card">
+          <p class="k">Dresscode</p><h3>Festlich &amp; bunt</h3>
+          <p>Festlich und elegant — und gerne farbenfroh. Zieht an, worin ihr euch großartig fühlt.</p>
+        </div>
+        <div class="card">
+          <p class="k">Übernachtung</p><h3>Hotels</h3>
+          <p class="placeholder">[Hotel-Tipps folgen in Kürze.]</p>
+        </div>
+        <div class="card">
+          <p class="k">Geschenke</p><h3>Reisekasse</h3>
+          <p>Das schönste Geschenk seid ihr. Wer mag: Statt Toaster &amp; Vase sparen wir auf die Flitterwochen und unseren gemeinsamen Start — über einen Beitrag zur Reisekasse freuen wir uns von Herzen. 🤍</p>
+        </div>
       </div>
     </div>
   </section>
@@ -175,9 +235,54 @@
     <p class="label">Rückmeldung</p>
     <h2>Seid ihr dabei?</h2>
     <div class="rule-h"></div>
-    <p>Wir würden uns von Herzen freuen, diesen Tag mit euch zu teilen. Bitte gebt uns bis zum <span class="placeholder">[Datum]</span> Bescheid.</p>
-    <a class="btn" href="mailto:eure-mail@beispiel.de?subject=Zusage%20Hochzeit%20Anna%20%26%20Nino">Jetzt zusagen</a>
-    <p style="margin-top:1.8rem; font-size:0.8rem;" class="placeholder">[Später richten wir hier ein richtiges Formular ein – für Anzahl der Personen, Essenswünsche usw.]</p>
+    <p>Wir würden uns von Herzen freuen, diesen Tag mit euch zu teilen.<br>Bitte gebt uns bis spätestens <strong>1. Mai 2027</strong> Bescheid.</p>
+
+    <form class="rsvp-form" id="rsvpForm">
+      <div class="field">
+        <label class="q" for="f-name">Name(n)</label>
+        <input type="text" id="f-name" name="name" placeholder="Vor- und Nachname(n)" required />
+      </div>
+
+      <div class="field">
+        <span class="q">Kommt ihr?</span>
+        <div class="choice">
+          <label><input type="radio" name="teilnahme" value="Ja, wir sind dabei" required /><span>Ja, wir sind dabei 🤍</span></label>
+          <label><input type="radio" name="teilnahme" value="Leider müssen wir absagen" /><span>Leider nicht</span></label>
+        </div>
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label class="q" for="f-erw">Anzahl Erwachsene</label>
+          <input type="number" id="f-erw" name="erwachsene" min="0" value="1" />
+          <p class="hint">inkl. Partner/-in, falls dabei</p>
+        </div>
+        <div class="field">
+          <label class="q" for="f-kids">Anzahl Kinder</label>
+          <input type="number" id="f-kids" name="kinder" min="0" value="0" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="q" for="f-alter">Alter der Kinder</label>
+        <input type="text" id="f-alter" name="kinder_alter" placeholder="z. B. 3 und 6 Jahre" />
+      </div>
+
+      <div class="field">
+        <label class="q" for="f-allerg">Unverträglichkeiten / Allergien</label>
+        <textarea id="f-allerg" name="allergien" placeholder="Gibt es etwas, das wir bei Essen &amp; Getränken beachten sollten?"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="q" for="f-msg">Nachricht an uns (optional)</label>
+        <textarea id="f-msg" name="nachricht" placeholder="Grüße, Wünsche, Anmerkungen …"></textarea>
+      </div>
+
+      <div style="text-align:center;">
+        <button type="submit" class="btn">Rückmeldung senden</button>
+        <p class="hint" style="text-align:center; margin-top:1rem;">Nach dem Klick öffnet sich euer E-Mail-Programm mit der fertigen Nachricht — einfach absenden.</p>
+      </div>
+    </form>
   </section>
 
   <footer>
@@ -186,20 +291,36 @@
   </footer>
 
   <script>
-    var WEDDING_DATE = "2027-06-05T15:00:00";
-    var target = new Date(WEDDING_DATE).getTime();
+    // Countdown bis zur Hochzeit
+    var target = new Date("2027-06-05T15:00:00").getTime();
     function tick() {
-      var diff = target - Date.now();
-      if (diff < 0) diff = 0;
-      var d = Math.floor(diff / 86400000);
-      var h = Math.floor((diff % 86400000) / 3600000);
-      var m = Math.floor((diff % 3600000) / 60000);
-      document.getElementById('cd-days').textContent = d;
-      document.getElementById('cd-hours').textContent = h;
-      document.getElementById('cd-mins').textContent = m;
+      var diff = target - Date.now(); if (diff < 0) diff = 0;
+      document.getElementById('cd-days').textContent  = Math.floor(diff / 86400000);
+      document.getElementById('cd-hours').textContent = Math.floor((diff % 86400000) / 3600000);
+      document.getElementById('cd-mins').textContent  = Math.floor((diff % 3600000) / 60000);
     }
-    tick();
-    setInterval(tick, 30000);
+    tick(); setInterval(tick, 30000);
+
+    // RSVP – vorläufig per E-Mail (wird später auf automatische Sammlung umgestellt)
+    var RSVP_EMAIL = "DEINE-EMAIL@beispiel.de"; // <-- wird noch durch eure echte Adresse ersetzt
+    document.getElementById('rsvpForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = e.target;
+      var teil = (f.querySelector('input[name="teilnahme"]:checked') || {}).value || "(keine Angabe)";
+      var lines = [
+        "Name(n): " + f.name.value,
+        "Teilnahme: " + teil,
+        "Erwachsene: " + f.erwachsene.value,
+        "Kinder: " + f.kinder.value,
+        "Alter der Kinder: " + (f.kinder_alter.value || "-"),
+        "Unverträglichkeiten/Allergien: " + (f.allergien.value || "-"),
+        "Nachricht: " + (f.nachricht.value || "-")
+      ];
+      var subject = "RSVP Hochzeit Anna & Nino – " + (f.name.value || "");
+      window.location.href = "mailto:" + RSVP_EMAIL +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(lines.join("\n"));
+    });
   </script>
 
 </body>
