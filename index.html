@@ -111,6 +111,19 @@
     .cal-day { position: relative; font-size: 0.85rem; color: #3d3d3d; padding: 0.4rem 0; }
     .cal-day.is-day { position: relative; isolation: isolate; color: var(--ink); }
     .cal-heart { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -54%); width: 30px; height: 30px; z-index: -1; }
+    /* "Der grosse Tag" als Foto-Band mit Parallax */
+    #tag { position: relative; overflow: hidden; background: #20252e; }
+    #tag::before { content: ""; position: absolute; inset: 0; z-index: 0; background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&amp;q=80&amp;auto=format&amp;fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; filter: grayscale(1) contrast(1.03); }
+    #tag::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.64)); }
+    #tag .inner { position: relative; z-index: 1; }
+    #tag h2 { color: #ffffff; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+    #tag .label { color: var(--hero-blue); text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+    #tag .cal-month, #tag .cal-day, #tag .cal-wd { text-shadow: 0 1px 10px rgba(0,0,0,0.6); }
+    #tag .cal-month { color: #ffffff; }
+    #tag .cal-wd { color: rgba(255,255,255,0.72); }
+    #tag .cal-day { color: rgba(255,255,255,0.92); }
+    #tag .cal-day.is-day { color: #ffffff; }
+    #tag .cal-heart { stroke: #e3e7ec; }
     #infos .card { background: #ffffff; border: 1px solid var(--line); border-radius: 3px; padding: 2rem 1.5rem; box-shadow: 0 6px 24px rgba(0,0,0,0.05); }
     #rsvp .rsvp-form { background: #ffffff; border: 1px solid var(--line); border-radius: 3px; padding: 2.6rem 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
     section h2 { font-size: clamp(2.4rem, 6.5vw, 3.9rem); margin-top: 1rem; }
@@ -243,17 +256,7 @@
     </div>
   </section>
 
-  <div class="section-divider" aria-hidden="true">
-    <svg viewBox="0 0 240 24" fill="none" stroke="#b7bdc4" stroke-width="1.2" stroke-linecap="round">
-      <path d="M24 12 Q 74 4 100 12" />
-      <path d="M140 12 Q 166 4 216 12" />
-      <path d="M120 5 L129 12 L120 19 L111 12 Z" />
-      <circle cx="104" cy="12" r="1.4" fill="#b7bdc4" stroke="none" />
-      <circle cx="136" cy="12" r="1.4" fill="#b7bdc4" stroke="none" />
-    </svg>
-  </div>
-
-  <section id="tag" class="bg-paper">
+  <section id="tag">
     <div class="inner">
       <p class="label reveal">Save the Date</p>
       <h2 class="reveal">Der große Tag</h2>
