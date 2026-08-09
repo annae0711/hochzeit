@@ -81,7 +81,7 @@
     .bg-white { background: var(--white); }
     .bg-paper { background: var(--paper); }
     .bg-soft  { background: #eceef0; }
-    .bg-gray  { background: #aaadb0; }
+    .bg-gray  { background: #66686b; }
     #location h2 { color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.25); }
     #location p { color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.28); }
     #location .hint { color: rgba(255,255,255,0.9); text-shadow: 0 1px 3px rgba(0,0,0,0.28); }
@@ -208,11 +208,12 @@
 
     /* BUTTON */
     .btn {
-      display: inline-block; margin-top: 1rem; padding: 1rem 2.8rem;
+      display: inline-flex; align-items: center; gap: 0.55rem; margin-top: 1.4rem; padding: 0.95rem 2.4rem;
       border: 1px solid var(--accent-deep); color: var(--accent-deep); text-decoration: none; cursor: pointer;
-      font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 400;
-      background: transparent; transition: all 0.3s;
+      font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 400;
+      background: transparent; border-radius: 999px; transition: all 0.3s;
     }
+    .btn svg { width: 15px; height: 15px; }
     .btn:hover { background: var(--accent-deep); color: #fff; }
 
     footer { text-align: center; padding: 5rem 1.5rem 3.5rem; border-top: 1px solid var(--line); }
@@ -368,7 +369,7 @@
     <div class="map reveal">
       <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=9.1517%2C49.2308%2C9.1617%2C49.2368&amp;layer=mapnik&amp;marker=49.2337593%2C9.1566693" title="Karte: Kursaal Bad Wimpfen" loading="lazy"></iframe>
     </div>
-    <a class="btn reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen" target="_blank" rel="noopener noreferrer">Route öffnen</a>
+    <a class="btn reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Route öffnen</a>
     </div>
   </section>
 
@@ -435,7 +436,7 @@
       <div class="field">
         <span class="q">Kommt ihr?</span>
         <div class="choice">
-          <label><input type="radio" name="teilnahme" value="Ja, wir sind dabei" required /><span>Ja, wir sind dabei 🤍</span></label>
+          <label><input type="radio" name="teilnahme" value="Ja, wir sind dabei" required /><span>Ja, wir sind dabei</span></label>
           <label><input type="radio" name="teilnahme" value="Leider müssen wir absagen" /><span>Leider nicht</span></label>
         </div>
       </div>
