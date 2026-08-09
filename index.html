@@ -89,11 +89,6 @@
     #location .rule-h { background: #ffffff; }
     #location .btn { border-color: #ffffff; color: #ffffff; }
     #location .btn:hover { background: #ffffff; color: var(--ink); }
-    /* Weiche Übergänge oben (weiß->grau) und unten (grau->weiß) */
-    #location { position: relative; overflow: hidden; padding-top: 15rem; padding-bottom: 15rem; }
-    #location::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 230px; background: linear-gradient(#ffffff, #aaadb0); z-index: 0; }
-    #location::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 250px; background: linear-gradient(#aaadb0, #ffffff); z-index: 0; }
-    #location .inner { position: relative; z-index: 1; }
     .bg-dark  { background: #232528; }
     .bg-dark h2 { color: #ffffff; }
     .bg-dark p { color: #c7ced8; }
@@ -146,9 +141,9 @@
     #hotels .h-meta { color: rgba(255,255,255,0.8); text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
     #hotels .h-meta a { color: var(--hero-blue); }
     #hotels .hotel { border-bottom-color: rgba(255,255,255,0.18); }
-    #infos .card { background: transparent; border: 1px solid #d7d9dc; border-radius: 3px; padding: 2rem 1.5rem; }
+    #infos .card { background: transparent; border: 1px solid var(--accent-deep); border-radius: 3px; padding: 2rem 1.5rem; }
     #rsvp .rsvp-form { background: #ffffff; border: 1px solid var(--line); border-radius: 3px; padding: 2.6rem 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
-    section h2 { font-family: 'Great Vibes', cursive; font-weight: 400; font-size: clamp(3rem, 9vw, 5rem); line-height: 1.05; margin-top: 0.8rem; }
+    section h2 { font-family: 'Pinyon Script', cursive; font-weight: 400; font-size: clamp(3rem, 9vw, 5rem); line-height: 1.1; margin-top: 0.8rem; }
     section p { color: #3d3d3d; font-weight: 300; margin: 0 auto 1.1rem; max-width: 620px; }
     .lead { font-size: 1.08rem; }
     .placeholder { color: var(--muted); font-style: italic; }
@@ -221,7 +216,7 @@
     .btn:hover { background: var(--accent-deep); color: #fff; }
 
     footer { text-align: center; padding: 5rem 1.5rem 3.5rem; border-top: 1px solid var(--line); }
-    footer .names { font-family: 'Great Vibes', cursive; font-size: 3rem; }
+    footer .names { font-family: 'Pinyon Script', cursive; font-size: 3rem; }
     footer .names .amp { color: var(--accent); font-style: italic; }
     footer p { color: var(--muted); font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 0.8rem; }
     footer .foot-links { margin-top: 1.5rem; }
@@ -370,7 +365,10 @@
     <div class="rule-h reveal"></div>
     <p class="reveal">Wir feiern im <strong>Kursaal Bad Wimpfen</strong><br>Osterbergstraße 16 · 74206 Bad Wimpfen</p>
     <p class="hint reveal" style="text-align:center;">Parkplätze findet ihr ganz in der Nähe (gegenüber dem Hotel).</p>
-    <a class="btn reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen" target="_blank" rel="noopener noreferrer">Auf Google Maps ansehen</a>
+    <div class="map reveal">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=9.1517%2C49.2308%2C9.1617%2C49.2368&amp;layer=mapnik&amp;marker=49.2337593%2C9.1566693" title="Karte: Kursaal Bad Wimpfen" loading="lazy"></iframe>
+    </div>
+    <a class="btn reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen" target="_blank" rel="noopener noreferrer">Route öffnen</a>
     </div>
   </section>
 
@@ -386,7 +384,7 @@
         </div>
         <div class="card reveal">
           <p class="k">Geschenke</p><h3>Reisekasse</h3>
-          <p>Das schönste Geschenk seid ihr. Wer mag: Statt Toaster &amp; Vase sparen wir auf die Flitterwochen und unseren gemeinsamen Start — über einen Beitrag zur Reisekasse freuen wir uns von Herzen. 🤍</p>
+          <p>Das schönste Geschenk seid ihr. Wer mag: Statt Toaster &amp; Vase sparen wir auf die Flitterwochen und unseren gemeinsamen Start — über einen Beitrag zur Reisekasse freuen wir uns von Herzen.</p>
         </div>
       </div>
 
