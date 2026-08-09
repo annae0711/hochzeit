@@ -7,6 +7,7 @@
   <meta name="description" content="Anna & Nino sagen Ja — am 5. Juni 2027 im Kursaal Bad Wimpfen. Alle Infos für unsere Gäste." />
   <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="fonts/fonts.css" />
+  <link rel="stylesheet" href="vendor/leaflet.css" />
   <style>
     :root {
       --white: #ffffff;
@@ -143,7 +144,7 @@
     #hotels .hotel { border-bottom-color: rgba(255,255,255,0.18); }
     #infos .card { background: transparent; border: 1px solid var(--accent-deep); border-radius: 3px; padding: 2rem 1.5rem; }
     #rsvp .rsvp-form { background: #ffffff; border: 1px solid var(--line); border-radius: 3px; padding: 2.6rem 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
-    section h2 { font-family: 'Pinyon Script', cursive; font-weight: 400; font-size: clamp(3rem, 9vw, 5rem); line-height: 1.1; margin-top: 0.8rem; }
+    section h2 { font-family: 'Allura', cursive; font-weight: 400; font-size: clamp(3rem, 9vw, 5rem); line-height: 1.12; margin-top: 0.8rem; }
     section p { color: #3d3d3d; font-weight: 300; margin: 0 auto 1.1rem; max-width: 620px; }
     .lead { font-size: 1.08rem; }
     .placeholder { color: var(--muted); font-style: italic; }
@@ -161,6 +162,10 @@
     /* MAP */
     .map { margin-top: 2.4rem; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
     .map iframe { display: block; width: 100%; height: 320px; border: 0; filter: grayscale(0.2); }
+    #map { height: 380px; width: 100%; border-radius: 4px; margin-top: 2rem; }
+    .leaflet-container { font-family: 'Jost', sans-serif; }
+    .maptip { background: #fff; border: 1px solid var(--line); color: var(--ink); font-size: 0.7rem; letter-spacing: 0.03em; padding: 2px 8px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+    .maptip::before { display: none; }
 
     /* INFO CARDS */
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-top: 3rem; text-align: center; }
@@ -217,7 +222,7 @@
     .btn:hover { background: var(--accent-deep); color: #fff; }
 
     footer { text-align: center; padding: 5rem 1.5rem 3.5rem; border-top: 1px solid var(--line); }
-    footer .names { font-family: 'Pinyon Script', cursive; font-size: 3rem; }
+    footer .names { font-family: 'Allura', cursive; font-size: 3.2rem; }
     footer .names .amp { color: var(--accent); font-style: italic; }
     footer p { color: var(--muted); font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 0.8rem; }
     footer .foot-links { margin-top: 1.5rem; }
@@ -366,9 +371,7 @@
     <div class="rule-h reveal"></div>
     <p class="reveal">Wir feiern im <strong>Kursaal Bad Wimpfen</strong><br>Osterbergstraße 16 · 74206 Bad Wimpfen</p>
     <p class="hint reveal" style="text-align:center;">Parkplätze findet ihr ganz in der Nähe (gegenüber dem Hotel).</p>
-    <div class="map reveal">
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=9.1517%2C49.2308%2C9.1617%2C49.2368&amp;layer=mapnik&amp;marker=49.2337593%2C9.1566693" title="Karte: Kursaal Bad Wimpfen" loading="lazy"></iframe>
-    </div>
+    <div id="map"></div>
     <a class="btn reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Route öffnen</a>
     </div>
   </section>
@@ -544,6 +547,28 @@
       window.location.href = "mailto:" + RSVP_EMAIL +
         "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
     });
+  </script>
+
+  <script src="vendor/leaflet.js"></script>
+  <script>
+    (function () {
+      var el = document.getElementById('map');
+      if (!el || typeof L === 'undefined') return;
+      var kursaal = [49.2337593, 9.1566693];
+      var pSRH = [49.2335942, 9.1539004];
+      var pNeckar = [49.2355156, 9.1570302];
+      var map = L.map('map', { scrollWheelZoom: false });
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap-Mitwirkende' }).addTo(map);
+      function mk(pos, label, color) {
+        L.circleMarker(pos, { radius: 8, color: '#ffffff', weight: 2, fillColor: color, fillOpacity: 1 })
+          .addTo(map).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -6], className: 'maptip' });
+      }
+      mk(kursaal, 'Kursaal', '#1a1a1a');
+      mk(pSRH, 'Parkplatz SRH', '#5f7a91');
+      mk(pNeckar, 'Parkplatz Neckarblick', '#5f7a91');
+      map.fitBounds([kursaal, pSRH, pNeckar], { padding: [45, 45] });
+      setTimeout(function () { map.invalidateSize(); }, 200);
+    })();
   </script>
 
 </body>
