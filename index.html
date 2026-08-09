@@ -144,7 +144,7 @@
     #hotels .hotel { border-bottom-color: rgba(255,255,255,0.18); }
     #infos .card { background: transparent; border: 1px solid var(--accent-deep); border-radius: 3px; padding: 2rem 1.5rem; }
     #rsvp .rsvp-form { background: #ffffff; border: 1px solid var(--line); border-radius: 3px; padding: 2.6rem 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
-    section h2 { font-family: 'Allura', cursive; font-weight: 400; font-size: clamp(3rem, 9vw, 5rem); line-height: 1.12; margin-top: 0.8rem; }
+    section h2 { font-size: clamp(2.4rem, 6.5vw, 3.9rem); margin-top: 1rem; }
     section p { color: #3d3d3d; font-weight: 300; margin: 0 auto 1.1rem; max-width: 620px; }
     .lead { font-size: 1.08rem; }
     .placeholder { color: var(--muted); font-style: italic; }
@@ -222,7 +222,7 @@
     .btn:hover { background: var(--accent-deep); color: #fff; }
 
     footer { text-align: center; padding: 5rem 1.5rem 3.5rem; border-top: 1px solid var(--line); }
-    footer .names { font-family: 'Allura', cursive; font-size: 3.2rem; }
+    footer .names { font-family: 'Cormorant Garamond', serif; font-size: 2rem; }
     footer .names .amp { color: var(--accent); font-style: italic; }
     footer p { color: var(--muted); font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 0.8rem; }
     footer .foot-links { margin-top: 1.5rem; }
@@ -370,7 +370,7 @@
     <h2 class="reveal">Kursaal Bad Wimpfen</h2>
     <div class="rule-h reveal"></div>
     <p class="reveal">Wir feiern im <strong>Kursaal Bad Wimpfen</strong><br>Osterbergstraße 16 · 74206 Bad Wimpfen</p>
-    <p class="hint reveal" style="text-align:center;">Parkplätze findet ihr ganz in der Nähe (gegenüber dem Hotel).</p>
+    <p class="hint reveal" style="text-align:center;">In unmittelbarer Nähe stehen euch mehrere Parkmöglichkeiten zur Verfügung – auch entlang der umliegenden Straßen. Die zwei größeren Parkplätze ganz in der Nähe haben wir euch auf der Karte markiert.</p>
     <div id="map"></div>
     <a class="btn reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Kursaal+Bad+Wimpfen,+Osterbergstra%C3%9Fe+16,+74206+Bad+Wimpfen" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Route öffnen</a>
     </div>
@@ -554,9 +554,9 @@
     (function () {
       var el = document.getElementById('map');
       if (!el || typeof L === 'undefined') return;
-      var kursaal = [49.2337593, 9.1566693];
-      var pSRH = [49.2335942, 9.1539004];
-      var pNeckar = [49.2355156, 9.1570302];
+      var kursaal = [49.2337057, 9.1572419];
+      var pSRH = [49.233890, 9.151356];
+      var pNeckar = [49.236028, 9.156221];
       var map = L.map('map', { scrollWheelZoom: false });
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap-Mitwirkende' }).addTo(map);
       function mk(pos, label, color) {
@@ -564,7 +564,7 @@
           .addTo(map).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -6], className: 'maptip' });
       }
       mk(kursaal, 'Kursaal', '#1a1a1a');
-      mk(pSRH, 'Parkplatz SRH', '#5f7a91');
+      mk(pSRH, 'Parkplatz Gesundheitszentrum', '#5f7a91');
       mk(pNeckar, 'Parkplatz Neckarblick', '#5f7a91');
       map.fitBounds([kursaal, pSRH, pNeckar], { padding: [45, 45] });
       setTimeout(function () { map.invalidateSize(); }, 200);
