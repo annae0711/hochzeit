@@ -82,7 +82,7 @@
     .bg-white { background: var(--white); }
     .bg-paper { background: var(--paper); }
     .bg-soft  { background: #eceef0; }
-    .bg-gray  { background: #66686b; }
+    .bg-gray  { background: #24262b; }
     #location h2 { color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.25); }
     #location p { color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.28); }
     #location .hint { color: rgba(255,255,255,0.9); text-shadow: 0 1px 3px rgba(0,0,0,0.28); }
@@ -90,6 +90,14 @@
     #location .rule-h { background: #ffffff; }
     #location .btn { border-color: #ffffff; color: #ffffff; }
     #location .btn:hover { background: #ffffff; color: var(--ink); }
+    #trauzeugen h2 { color: #ffffff; }
+    #trauzeugen p { color: rgba(255,255,255,0.9); }
+    #trauzeugen .label { color: var(--hero-blue); }
+    #trauzeugen .rule-h { background: var(--hero-blue); }
+    #trauzeugen .h-name { color: #ffffff; }
+    #trauzeugen .h-meta { color: rgba(255,255,255,0.8); }
+    #trauzeugen .h-meta a { color: var(--hero-blue); }
+    #trauzeugen .hotel { border-bottom-color: rgba(255,255,255,0.18); }
     .bg-dark  { background: #232528; }
     .bg-dark h2 { color: #ffffff; }
     .bg-dark p { color: #c7ced8; }
@@ -261,6 +269,7 @@
     <a href="#location">Location</a>
     <a href="#infos">Infos</a>
     <a href="#hotels">Hotels</a>
+    <a href="#trauzeugen">Trauzeugen</a>
     <a href="#rsvp">Zusagen</a>
   </nav>
 
@@ -423,6 +432,27 @@
           <div class="h-meta">Hauptstraße 1 · 74206 Bad Wimpfen (Altstadt)</div>
           <div class="h-meta">ca. 15 Min. zu Fuß · 5 Min. mit dem Auto</div>
           <div class="h-meta">Tel. <a href="tel:+497063934343">07063 934343</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trauzeugen" class="bg-gray">
+    <div class="inner">
+      <p class="label reveal">Ihr habt Fragen?</p>
+      <h2 class="reveal">Unsere Trauzeugen</h2>
+      <div class="rule-h reveal"></div>
+      <p class="reveal">Wenn ihr Fragen habt oder euch mit uns abstimmen möchtet, meldet euch jederzeit gerne bei unseren Trauzeugen:</p>
+      <div class="hotels">
+        <div class="hotel reveal">
+          <div class="h-name">[Name der Trauzeugin]</div>
+          <div class="h-meta">Trauzeugin von Anna</div>
+          <div class="h-meta">Tel. <a href="tel:">[Telefonnummer]</a></div>
+        </div>
+        <div class="hotel reveal">
+          <div class="h-name">[Name des Trauzeugen]</div>
+          <div class="h-meta">Trauzeuge von Nino</div>
+          <div class="h-meta">Tel. <a href="tel:">[Telefonnummer]</a></div>
         </div>
       </div>
     </div>
