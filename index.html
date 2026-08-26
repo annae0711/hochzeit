@@ -112,6 +112,8 @@
     .flow-wave { display: block; width: 58px; height: 52px; margin: 0.5rem auto; }
     .flow-wave.fw-h { height: 66px; }
     .flow-wave path { fill: none; stroke: #9aa1a8; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+    .js .flow-wave path { stroke-dasharray: 150; stroke-dashoffset: 150; transition: stroke-dashoffset 1s ease; }
+    .js .flow-wave.in path { stroke-dashoffset: 0; }
     /* Kalender */
     .calendar { max-width: 320px; margin: 3rem auto 0; }
     .cal-month { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--ink); letter-spacing: 0.06em; margin-bottom: 1rem; }
@@ -246,6 +248,7 @@
     .js .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       .js .hero > *, .js .reveal { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+      .js .flow-wave path { stroke-dashoffset: 0 !important; transition: none !important; }
     }
   </style>
 </head>
@@ -346,21 +349,21 @@
       </svg>
       <div class="flow">
         <div class="flow-item reveal"><svg class="ic"><use href="#ic-glass"/></svg><span class="flow-time">15:00</span><span class="flow-text">Sektempfang, Gratulation &amp; Fotos</span></div>
-        <svg class="flow-wave" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
+        <svg class="flow-wave reveal" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
         <div class="flow-item reveal"><svg class="ic"><use href="#ic-spark"/></svg><span class="flow-time">17:00</span><span class="flow-text">Überraschungen &amp; Programm</span></div>
-        <svg class="flow-wave" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
+        <svg class="flow-wave reveal" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
         <div class="flow-item reveal"><svg class="ic"><use href="#ic-heart"/></svg><span class="flow-time">18:00</span><span class="flow-text">Zeit zum Genießen</span></div>
-        <svg class="flow-wave" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
+        <svg class="flow-wave reveal" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
         <div class="flow-item reveal"><svg class="ic"><use href="#ic-dine"/></svg><span class="flow-time">18:30</span><span class="flow-text">Abendessen</span></div>
-        <svg class="flow-wave" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
+        <svg class="flow-wave reveal" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
         <div class="flow-item reveal"><svg class="ic"><use href="#ic-spark"/></svg><span class="flow-time">20:00</span><span class="flow-text">Überraschungen &amp; Programm</span></div>
-        <svg class="flow-wave" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
+        <svg class="flow-wave reveal" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
         <div class="flow-item reveal"><svg class="ic"><use href="#ic-heart"/></svg><span class="flow-time">20:30</span><span class="flow-text">Zeit zum Genießen</span></div>
-        <svg class="flow-wave" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
+        <svg class="flow-wave reveal" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
         <div class="flow-item reveal"><svg class="ic"><use href="#ic-cake"/></svg><span class="flow-time">21:15</span><span class="flow-text">Tortenanschnitt</span></div>
-        <svg class="flow-wave" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
+        <svg class="flow-wave reveal" viewBox="0 0 60 52" aria-hidden="true"><path d="M30 3 C 8 16, 52 30, 30 49"/></svg>
         <div class="flow-item reveal"><svg class="ic"><use href="#ic-music"/></svg><span class="flow-time">22:00</span><span class="flow-text">Hochzeitstanz &amp; Eröffnung der Tanzfläche</span></div>
-        <svg class="flow-wave fw-h" viewBox="0 0 60 66" aria-hidden="true"><path d="M30 3 C 8 15, 52 27, 30 41"/><path d="M30 59 c -2.6 -3 -7 -5 -7 -9.2 a3.4 3.4 0 0 1 7 -1.1 a3.4 3.4 0 0 1 7 1.1 c 0 4.2 -4.4 6.2 -7 9.2 z"/></svg>
+        <svg class="flow-wave fw-h reveal" viewBox="0 0 60 66" aria-hidden="true"><path d="M30 3 C 8 15, 52 27, 30 41"/><path d="M30 59 c -2.6 -3 -7 -5 -7 -9.2 a3.4 3.4 0 0 1 7 -1.1 a3.4 3.4 0 0 1 7 1.1 c 0 4.2 -4.4 6.2 -7 9.2 z"/></svg>
         <div class="flow-item reveal"><svg class="ic"><use href="#ic-moon"/></svg><span class="flow-time">00:00</span><span class="flow-text">Mitternachtssnack</span></div>
       </div>
     </div>
@@ -502,7 +505,7 @@
     (function () {
       var items = document.querySelectorAll('.reveal');
       // leichte Staffelung innerhalb von Gruppen
-      ['.flow', '.cards', '.hotels', '.gallery'].forEach(function (sel) {
+      ['.cards', '.hotels', '.gallery'].forEach(function (sel) {
         var group = document.querySelector(sel);
         if (!group) return;
         group.querySelectorAll('.reveal').forEach(function (el, i) { el.style.transitionDelay = (i * 80) + 'ms'; });
