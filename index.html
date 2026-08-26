@@ -15,9 +15,9 @@
       --ink: #1a1a1a;
       --muted: #7c7c7c;
       --line: #e7e7e4;
-      --accent: #7f97ad;        /* staubiges Blaugrau */
-      --accent-deep: #5f7a91;
-      --hero-blue: #a3bcd4;     /* helleres Blau fuer dunkles Titelbild */
+      --accent: #c4a35f;        /* Gold */
+      --accent-deep: #a17e38;   /* dunkleres Gold (Text/Rahmen) */
+      --hero-blue: #e0c98f;     /* helleres Gold fuer dunkle Bereiche */
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -209,7 +209,7 @@
     .choice label { flex: 1; min-width: 150px; border: 1px solid var(--line); padding: 0.9rem 1rem; text-align: center; cursor: pointer; font-size: 0.9rem; letter-spacing: 0.04em; transition: all 0.2s; }
     .choice input { position: absolute; opacity: 0; pointer-events: none; }
     .choice input:checked + span { color: var(--accent-deep); font-weight: 400; }
-    .choice label:has(input:checked) { border-color: var(--accent); background: #eef2f6; }
+    .choice label:has(input:checked) { border-color: var(--accent); background: #f6f1e4; }
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
     @media (max-width: 460px) { .two { grid-template-columns: 1fr; } }
 
@@ -566,8 +566,8 @@
           .addTo(map).bindTooltip(label, { permanent: true, direction: 'top', offset: [0, -6], className: 'maptip' });
       }
       mk(kursaal, 'Kursaal', '#1a1a1a');
-      mk(pSRH, 'Parkplatz Gesundheitszentrum', '#5f7a91');
-      mk(pNeckar, 'Parkplatz Neckarblick', '#5f7a91');
+      mk(pSRH, 'Parkplatz Gesundheitszentrum', '#b8912f');
+      mk(pNeckar, 'Parkplatz Neckarblick', '#b8912f');
       map.fitBounds([kursaal, pSRH, pNeckar], { padding: [45, 45] });
       setTimeout(function () { map.invalidateSize(); }, 200);
     })();
