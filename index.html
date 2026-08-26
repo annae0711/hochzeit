@@ -24,6 +24,7 @@
     body {
       font-family: 'Jost', sans-serif; font-weight: 300; color: var(--ink);
       background: var(--white); line-height: 1.8; -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; }
 
@@ -31,12 +32,8 @@
     .rule-h { width: 48px; height: 1px; background: var(--accent); margin: 1.6rem auto; }
 
     /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: center; gap: 0.6rem;
-      padding: 0.9rem 1rem; background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); flex-wrap: wrap;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .nav-links { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; padding: 0.9rem 1rem; }
     nav a {
       color: var(--ink); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.2em;
       text-transform: uppercase; font-weight: 400; padding: 0.45rem 0.85rem; border-radius: 3px;
@@ -44,6 +41,18 @@
     }
     nav a:hover { color: var(--accent-deep); }
     nav a.active { color: var(--accent-deep); }
+    .nav-toggle { display: none; position: absolute; top: 50%; right: 0.9rem; transform: translateY(-50%); width: 42px; height: 38px; background: transparent; border: 0; cursor: pointer; padding: 9px 8px; }
+    .nav-toggle span { display: block; height: 1.6px; width: 100%; background: var(--ink); margin: 5px 0; transition: transform 0.3s ease, opacity 0.3s ease; }
+    @media (max-width: 860px) {
+      nav { min-height: 54px; }
+      .nav-toggle { display: block; }
+      .nav-links { display: none; flex-direction: column; gap: 0; padding: 0.3rem 0 1rem; }
+      nav.open .nav-links { display: flex; }
+      .nav-links a { padding: 0.8rem 1rem; }
+      nav.open .nav-toggle span:nth-child(1) { transform: translateY(6.6px) rotate(45deg); }
+      nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+      nav.open .nav-toggle span:nth-child(3) { transform: translateY(-6.6px) rotate(-45deg); }
+    }
 
     /* HERO */
     header.hero {
@@ -255,6 +264,18 @@
     /* Scroll-Reveal */
     .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1); }
     .js .reveal.in { opacity: 1; transform: none; }
+    /* Responsive-Feinschliff für Handy & Tablet */
+    @media (max-width: 768px) {
+      header.hero::before, #tag::before, #hotels::before { background-attachment: scroll; }
+      section { padding: 5.5rem 1.3rem; }
+      .hero .meta { letter-spacing: 0.16em; }
+      #map { height: 320px; }
+      .hero .hero-script { width: clamp(280px, 86vw, 560px); }
+    }
+    @media (max-width: 400px) {
+      .hero .meta { font-size: 0.8rem; letter-spacing: 0.1em; }
+      .countdown { gap: 1.4rem; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .js .hero > *, .js .reveal { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
       .js .flow-wave path { stroke-dashoffset: 0 !important; transition: none !important; }
@@ -264,14 +285,17 @@
 <body>
 
   <nav>
-    <a href="#story">Geschichte</a>
-    <a href="#tag">Der Tag</a>
-    <a href="#ablauf">Ablauf</a>
-    <a href="#location">Location</a>
-    <a href="#infos">Infos</a>
-    <a href="#hotels">Hotels</a>
-    <a href="#rsvp">Zusagen</a>
-    <a href="#trauzeugen">Trauzeugen</a>
+    <button class="nav-toggle" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="#story">Geschichte</a>
+      <a href="#tag">Der Tag</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#location">Location</a>
+      <a href="#infos">Infos</a>
+      <a href="#hotels">Hotels</a>
+      <a href="#rsvp">Zusagen</a>
+      <a href="#trauzeugen">Trauzeugen</a>
+    </div>
   </nav>
 
   <header class="hero">
@@ -524,6 +548,20 @@
   </footer>
 
   <script>
+    // Mobiles Menü (Hamburger zum Aufklappen)
+    (function () {
+      var nav = document.querySelector('nav');
+      var btn = nav && nav.querySelector('.nav-toggle');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.querySelectorAll('.nav-links a').forEach(function (a) {
+        a.addEventListener('click', function () { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
+      });
+    })();
+
     // Countdown bis zur Hochzeit
     var target = new Date("2027-06-05T15:00:00").getTime();
     function tick() {
