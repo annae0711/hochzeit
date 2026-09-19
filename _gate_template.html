@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anna &amp; Nino</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <style>
+    :root {
+      --white: #ffffff;
+      --ink: #1a1a1a;
+      --muted: #7c7c7c;
+      --line: #e7e7e4;
+      --accent: #c4a35f;
+      --accent-deep: #a17e38;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Jost', sans-serif; font-weight: 300; color: var(--ink);
+      background: var(--white); line-height: 1.8; -webkit-font-smoothing: antialiased;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 2rem 1.3rem; overflow-x: hidden;
+    }
+    .js #gate { visibility: hidden; }
+    .js #gate.ready { visibility: visible; animation: fade 0.7s ease both; }
+    @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    #gate { width: 100%; max-width: 480px; text-align: center; }
+    .card { border: 1px solid var(--line); padding: clamp(2.2rem, 7vw, 3.4rem) clamp(1.4rem, 6vw, 2.8rem); }
+
+    .label { font-size: 0.7rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent-deep); font-weight: 400; }
+    .script { width: clamp(200px, 62vw, 300px); height: auto; display: block; margin: 1.6rem auto 0; }
+    .rule-h { width: 48px; height: 1px; background: var(--accent); margin: 1.8rem auto; }
+    .intro { font-size: 0.95rem; color: var(--muted); line-height: 1.75; }
+
+    form { margin-top: 2rem; }
+    input {
+      width: 100%; font-family: 'Jost', sans-serif; font-size: 1.05rem; font-weight: 300;
+      letter-spacing: 0.22em; text-align: center; color: var(--ink);
+      background: transparent; border: 0; border-bottom: 1px solid var(--line);
+      padding: 0.7rem 0.4rem; outline: none; transition: border-color 0.3s ease;
+    }
+    input::placeholder { color: #c9c9c9; letter-spacing: 0.18em; }
+    input:focus { border-bottom-color: var(--accent); }
+
+    button {
+      margin-top: 1.7rem; width: 100%; cursor: pointer;
+      font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--white); background: var(--accent-deep);
+      border: 1px solid var(--accent-deep); padding: 0.95rem 1rem;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    button:hover { background: var(--white); color: var(--accent-deep); }
+    button[disabled] { opacity: 0.55; cursor: default; }
+    button[disabled]:hover { background: var(--accent-deep); color: var(--white); }
+
+    .msg { min-height: 1.5rem; margin-top: 1.1rem; font-size: 0.82rem; letter-spacing: 0.04em; color: #b4453f; }
+    .msg.wait { color: var(--muted); }
+
+    .foot { margin-top: 2.2rem; font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .foot a { color: var(--muted); text-decoration: none; margin: 0 0.5rem; }
+    .foot a:hover { color: var(--accent-deep); }
+
+    noscript p { margin-top: 1.5rem; font-size: 0.85rem; color: #b4453f; }
+    @media (max-width: 400px) {
+      .label { font-size: 0.62rem; letter-spacing: 0.26em; }
+      .intro { font-size: 0.88rem; }
+    }
+  </style>
+</head>
+<body>
+  <main id="gate">
+    <div class="card">
+      <p class="label">Private Einladung</p>
+      <img class="script" src="img/schriftzug-dunkel.png" alt="Nino und Anna" />
+      <div class="rule-h"></div>
+      <p class="intro">Diese Seite ist nur f&uuml;r unsere G&auml;ste.<br />Bitte gebt das Passwort von eurer Einladung ein.</p>
+
+      <form id="form" autocomplete="off">
+        <input id="pw" type="text" placeholder="Passwort" aria-label="Passwort"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+        <button id="go" type="submit">&Ouml;ffnen</button>
+      </form>
+      <p class="msg" id="msg" role="status" aria-live="polite"></p>
+
+      <noscript>
+        <p>Bitte aktiviert JavaScript &mdash; ohne JavaScript l&auml;sst sich die Seite nicht &ouml;ffnen.</p>
+      </noscript>
+    </div>
+    <p class="foot">
+      <a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a>
+    </p>
+  </main>
+
+  <script>
+  (function () {
+    var D = __PAYLOAD__;
+    var KEY = 'hz-zugang';
+
+    var gate = document.getElementById('gate');
+    var form = document.getElementById('form');
+    var pw   = document.getElementById('pw');
+    var go   = document.getElementById('go');
+    var msg  = document.getElementById('msg');
+
+    function b64(s) {
+      var bin = atob(s), out = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+      return out;
+    }
+
+    function reveal(note) {
+      gate.classList.add('ready');
+      if (note) { msg.textContent = note; msg.classList.remove('wait'); }
+      try { pw.focus(); } catch (e) {}
+    }
+
+    // Entschluesselt den Seiteninhalt. Gibt den HTML-Text zurueck oder null
+    // bei falschem Passwort.
+    function unlock(input) {
+      var enc = new TextEncoder();
+      var norm = String(input).trim().toLowerCase();
+      var iv = b64(D.iv), ct = b64(D.ct);
+
+      return crypto.subtle
+        .importKey('raw', enc.encode(norm), 'PBKDF2', false, ['deriveBits'])
+        .then(function (base) {
+          return crypto.subtle.deriveBits(
+            { name: 'PBKDF2', salt: b64(D.salt), iterations: D.it, hash: 'SHA-256' },
+            base, 512);
+        })
+        .then(function (bits) {
+          var dk = new Uint8Array(bits);
+          var encKey = dk.slice(0, 32), macKey = dk.slice(32, 64);
+          var signed = new Uint8Array(iv.length + ct.length);
+          signed.set(iv, 0);
+          signed.set(ct, iv.length);
+
+          return crypto.subtle
+            .importKey('raw', macKey, { name: 'HMAC', hash: 'SHA-256' }, false, ['verify'])
+            .then(function (hk) { return crypto.subtle.verify('HMAC', hk, b64(D.mac), signed); })
+            .then(function (valid) {
+              if (!valid) return null;
+              return crypto.subtle
+                .importKey('raw', encKey, { name: 'AES-CBC' }, false, ['decrypt'])
+                .then(function (ck) { return crypto.subtle.decrypt({ name: 'AES-CBC', iv: iv }, ck, ct); })
+                .then(function (plain) { return new TextDecoder().decode(plain); });
+            });
+        });
+    }
+
+    function show(html) {
+      document.open();
+      document.write(html);
+      document.close();
+    }
+
+    function remember(value) {
+      try { localStorage.setItem(KEY, value); } catch (e) {}
+    }
+
+    if (!window.crypto || !crypto.subtle) {
+      reveal('Dieser Browser ist leider zu alt. Bitte ruft die Seite in einem aktuellen Browser auf.');
+      form.style.display = 'none';
+      return;
+    }
+
+    // Wer schon einmal drin war, kommt ohne erneute Eingabe rein.
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+
+    if (saved) {
+      unlock(saved).then(function (html) {
+        if (html) { show(html); return; }
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        reveal();
+      }).catch(function () { reveal(); });
+    } else {
+      reveal();
+    }
+
+    function attempt() {
+      var value = pw.value;
+      if (!value.trim()) { pw.focus(); return; }
+      if (go.disabled) { return; }
+
+      go.disabled = true;
+      msg.classList.add('wait');
+      msg.textContent = 'Einen Moment …';
+
+      unlock(value).then(function (html) {
+        if (html) { remember(value); show(html); return; }
+        go.disabled = false;
+        msg.classList.remove('wait');
+        msg.textContent = 'Das Passwort stimmt leider nicht. Bitte prüft eure Einladung.';
+        pw.select();
+      }).catch(function () {
+        go.disabled = false;
+        msg.classList.remove('wait');
+        msg.textContent = 'Da ist etwas schiefgelaufen. Bitte ladet die Seite neu.';
+      });
+    }
+
+    form.addEventListener('submit', function (ev) { ev.preventDefault(); attempt(); });
+    // Eigener Enter-Handler: auf Handys loest die "Los"-Taste sonst nicht
+    // zuverlaessig das Absenden aus.
+    pw.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.keyCode === 13) { ev.preventDefault(); attempt(); }
+    });
+  })();
+  </script>
+</body>
+</html>

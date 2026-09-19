@@ -1,0 +1,7 @@
+# Bau-Dateien der verschluesselten Seite nicht ausliefern
+<FilesMatch "^(_gate_template\.html|build_lock\.py)$">
+  Require all denied
+</FilesMatch>
+
+# Keine Verzeichnisauflistungen anzeigen
+Options -Indexes
