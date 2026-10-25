@@ -5,3 +5,6 @@
 
 # Keine Verzeichnisauflistungen anzeigen
 Options -Indexes
+
+# Moderne Bildformate mit korrektem Typ ausliefern
+AddType image/avif .avif
